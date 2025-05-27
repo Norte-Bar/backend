@@ -10,6 +10,6 @@ public class HealthController {
 
     @GetMapping
     public String estaSaudavel() {
-        return "Api está online e funcionando perfeitamente";
+        return "Api está online e funcionando corretamente";
     }
 }
