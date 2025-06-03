@@ -1,12 +1,12 @@
-package com.nortebar.api.services;
+package com.nortebar.api.app.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.nortebar.api.dtos.MesaDTO;
-import com.nortebar.api.models.Mesa;
-import com.nortebar.api.repositories.MesaRepository;
+import com.nortebar.api.app.repositories.MesaRepository;
+import com.nortebar.api.models.dtos.MesaDTO;
+import com.nortebar.api.models.entities.Mesa;
 
 @Service
 public class MesaService {

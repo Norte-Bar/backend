@@ -1,6 +1,6 @@
-package com.nortebar.api.models;
+package com.nortebar.api.models.entities;
 
-import com.nortebar.api.dtos.MesaDTO;
+import com.nortebar.api.models.dtos.MesaDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,5 +33,8 @@ public class Mesa {
 
     @Column(nullable = false)
     private Integer capacidade;
+
+    @Column(nullable = false)
+    private Boolean status;
 
 }

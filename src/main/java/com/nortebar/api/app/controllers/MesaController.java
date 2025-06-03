@@ -1,4 +1,4 @@
-package com.nortebar.api.controllers;
+package com.nortebar.api.app.controllers;
 
 import java.util.List;
 
@@ -6,14 +6,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.nortebar.api.dtos.MesaDTO;
-import com.nortebar.api.models.Mesa;
-import com.nortebar.api.services.MesaService;
+import com.nortebar.api.app.services.MesaService;
+import com.nortebar.api.models.dtos.MesaDTO;
+import com.nortebar.api.models.entities.Mesa;
 
 import jakarta.validation.Valid;
 
 @CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/mesa")
 public class MesaController {
     
     final MesaService mesaService;

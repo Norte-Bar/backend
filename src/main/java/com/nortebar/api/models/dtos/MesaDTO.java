@@ -1,4 +1,4 @@
-package com.nortebar.api.dtos;
+package com.nortebar.api.models.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 
