@@ -1,4 +1,4 @@
-package com.nortebar.api.dtos;
+package com.nortebar.api.models.dtos;
 
 import java.math.BigDecimal;
 
@@ -14,5 +14,8 @@ public record FuncionariosDTO (
     String cargo,
 
     @DecimalMin("0") 
-    BigDecimal salario
+    BigDecimal salario,
+
+    @NotBlank
+    String senha
 ){}

@@ -1,8 +1,9 @@
-package com.nortebar.api.models;
+package com.nortebar.api.models.entities;
 
 import java.math.BigDecimal;
 
-import com.nortebar.api.dtos.FuncionariosDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nortebar.api.models.dtos.FuncionariosDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +26,7 @@ public class Funcionario {
         this.nome = dto.nome();
         this.cargo = dto.cargo();
         this.salario = dto.salario();
+        this.senha = dto.senha();
     }
 
     @Id
@@ -39,4 +41,8 @@ public class Funcionario {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal salario;
+
+    @JsonIgnore
+    @Column(length = 255, nullable = false)
+    private String senha;
 }
