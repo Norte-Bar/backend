@@ -10,7 +10,7 @@ import com.nortebar.api.models.entities.Mesa;
 
 @Service
 public class MesaService {
-    
+
     final MesaRepository mesaRepository;
 
     public MesaService(MesaRepository mesaRepository) {
@@ -23,5 +23,21 @@ public class MesaService {
 
     public Mesa create(MesaDTO dto) {
         return mesaRepository.save(new Mesa(dto));
+    }
+
+    public Mesa update(Integer id, Mesa novaMesa) {
+        return mesaRepository.findById(id).map(mesa -> {
+            mesa.setNumero(novaMesa.getNumero());
+            mesa.setCapacidade(novaMesa.getCapacidade());
+            mesa.setStatus(novaMesa.getStatus());
+            return mesaRepository.save(mesa);
+        }).orElseThrow(() -> new RuntimeException("Mesa não encontrada"));
+    }
+
+    public void delete(Integer id) {
+        if (!mesaRepository.existsById(id)) {
+            throw new RuntimeException("Mesa não encontrada");
+        }
+        mesaRepository.deleteById(id);
     }
 }
