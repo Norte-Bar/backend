@@ -10,6 +10,8 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
+import com.nortebar.api.commons.utils.FuncionarioAuthenticated;
+
 @Service
 public class JwtService {
 
@@ -28,12 +30,17 @@ public class JwtService {
             .map(GrantedAuthority::getAuthority)
             .collect(Collectors.joining(" "));
 
+        FuncionarioAuthenticated funcionarioAuth = (FuncionarioAuthenticated) authentication.getPrincipal();
+
+        Integer id = funcionarioAuth.getFuncionario().getId();
+
         var claims = JwtClaimsSet.builder()
         .issuer("myNorteBar")
         .issuedAt(now)
         .expiresAt(now.plusSeconds(expiry))
         .subject(authentication.getName())
         .claim("scope", scopes)
+        .claim("id", id)
         .build();
 
         return encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();

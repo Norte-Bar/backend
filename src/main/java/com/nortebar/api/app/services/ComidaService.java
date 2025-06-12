@@ -36,4 +36,22 @@ public class ComidaService {
         }
         return comidaRepository.save(new Comida(dto));
     }
+
+    public Comida update(Integer id, Comida novaComida) {
+        return comidaRepository.findById(id).map(comida -> {
+            comida.setNome(novaComida.getNome());
+            comida.setDescricao(novaComida.getDescricao());
+            comida.setPreco(novaComida.getPreco());
+            comida.setTipo(novaComida.getTipo());
+            comida.setStatus(novaComida.getStatus());
+            return comidaRepository.save(comida);
+        }).orElseThrow(() -> new RuntimeException("Comida não encontrada!"));
+    }
+
+    public void delete(Integer id) {
+        if(!comidaRepository.existsById(id)) {
+            throw new RuntimeException("Comida não encontrada!");
+        }
+        comidaRepository.deleteById(id);
+    }
 }

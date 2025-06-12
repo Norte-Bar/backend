@@ -30,5 +30,9 @@ public class FuncionarioAuthenticated implements UserDetails{
     public String getUsername() {
         return funcionario.getNome();
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
     
 }
