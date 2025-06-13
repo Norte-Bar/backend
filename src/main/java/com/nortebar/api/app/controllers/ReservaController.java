@@ -3,8 +3,11 @@ package com.nortebar.api.app.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +37,15 @@ public class ReservaController {
     @PostMapping
     public Reserva create(@RequestBody @Valid ReservaDTO body) {
         return reservaService.create(body);
+    }
+
+    @PutMapping("/{id}")
+    public Reserva update(@PathVariable Integer id, @RequestBody Reserva reserva) {
+        return reservaService.update(id, reserva);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        reservaService.delete(id);
     }
 }
